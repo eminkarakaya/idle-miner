@@ -5,13 +5,14 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
+    Banka banka;
     Asansor asansor;
     public GameObject unlockPrefab;
     public List<Level> allLevels;
     public int level;
     private static GameManager _instance;
     public static GameManager instance{
-        get; private set;
+        get => _instance;
     }
     [SerializeField] private int nakit;
     [SerializeField] private Text nakitText;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        banka = FindObjectOfType<Banka>();
         unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
         asansor = FindObjectOfType<Asansor>();
     }
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         nakit += count;
         nakitText.text = nakit.ToString();
+        GoldAnim.instance.EarnGoldAnim2(count,5,banka.transform);
     }
     public void UnlockLevel()
     {

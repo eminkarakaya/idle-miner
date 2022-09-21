@@ -22,4 +22,8 @@ public class Level : MonoBehaviour
     {
         return kasa;
     }
+    public void LevelUpButton()
+    {
+        
+    }
 }

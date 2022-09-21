@@ -20,6 +20,7 @@ public class ParaTasiyici : MonoBehaviour
     {
         madenIslemeMachine = FindObjectOfType<MadenIslemeMachine>();
         banka = FindObjectOfType<Banka>();
+        Debug.Log(GameManager.instance);
         MadenAl();
     }
     public void SetGold(int value){
@@ -30,7 +31,7 @@ public class ParaTasiyici : MonoBehaviour
     {
         transform.DOMoveX(bankaPos.position.x,moveSpeed).OnComplete(()=>transform.DOMoveX(bankaPos.position.x,bosaltimSuresi)).OnComplete(()=>
         {
-            banka.SetGold(doluluk);
+            GameManager.instance.SetGold(doluluk);
             SetGold(0);
             MadenAl();
         });

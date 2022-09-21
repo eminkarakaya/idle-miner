@@ -32,7 +32,7 @@ public class GoldAnim : MonoBehaviour
         obj.transform.DOMove(pos,1f);
         Color color = new Color(255,255,255,0);
         obj.GetComponent<SpriteRenderer>().DOColor(color,1);
-        obj.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.DOFade(0,1);
+        obj.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.DOFade(0,1).OnComplete(()=> Destroy(obj));
     }
     public IEnumerator EarnGoldAnim(int earnedGold , int count , Transform transform)
     {
