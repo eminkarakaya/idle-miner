@@ -12,7 +12,7 @@ public class Asansor : MonoBehaviour
     [SerializeField] float asansorBosaltmaSuresi;
     public int temp = 1;
     [SerializeField] Transform zemin;
-    [SerializeField] List<Level> activeLevels;
+    public List<Level> activeLevels;
     [SerializeField] Text asansorDoluluguTxt;
     public int asansorKapasitesi;
     public int asansorDolulugu;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
+    public int unlockCost;
     [SerializeField] Text kasaText;
     [SerializeField] int kasa;
     public Manager manager;

@@ -11,8 +11,10 @@ public class Banka : MonoBehaviour
 
     public void SetGold(int value)
     {  
-        gold = value;
-        goldText.text = gold.ToString();
+        // gold += value;
+        // goldText.text = gold.ToString();
+        // StartCoroutine(GoldAnim.instance.EarnGoldAnim(value,5,this.transform));
+        GoldAnim.instance.EarnGoldAnim2(value,5,this.transform);
     }
     public int GetGold()
     {

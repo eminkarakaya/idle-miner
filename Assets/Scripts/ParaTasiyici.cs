@@ -30,7 +30,7 @@ public class ParaTasiyici : MonoBehaviour
     {
         transform.DOMoveX(bankaPos.position.x,moveSpeed).OnComplete(()=>transform.DOMoveX(bankaPos.position.x,bosaltimSuresi)).OnComplete(()=>
         {
-            banka.SetGold(banka.GetGold() + doluluk);
+            banka.SetGold(doluluk);
             SetGold(0);
             MadenAl();
         });

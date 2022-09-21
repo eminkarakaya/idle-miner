@@ -5,58 +5,41 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
+    Asansor asansor;
+    public GameObject unlockPrefab;
+    public List<Level> allLevels;
+    public int level;
     private static GameManager _instance;
     public static GameManager instance{
         get; private set;
     }
-    public int nakit;
-    public Text nakitText;
-    public int superNakit;
-    public Text superNakitText;
-    public int bosNakit;
-    public Text bosNakitText;
-    [SerializeField] int earnedGold;
-    [SerializeField] float distanceFactor,radius;
-    [SerializeField] GameObject goldPrefab,goldinScene;
-    [SerializeField] Ease ease;
-    [SerializeField] Text goldText;
-    [SerializeField] Transform parent;
+    [SerializeField] private int nakit;
+    [SerializeField] private Text nakitText;
+    [SerializeField] private int superNakit;
+    [SerializeField] private Text superNakitText;
+    [SerializeField] private int bosNakit;
+    [SerializeField] private Text bosNakitText;
     void Awake()
     {
         _instance = this;
     }
-    void SetGold(int count)
+    void Start()
+    {
+        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
+        asansor = FindObjectOfType<Asansor>();
+    }
+    public void SetGold(int count)
     {
         nakit += count;
         nakitText.text = nakit.ToString();
     }
-    public IEnumerator EarnGoldAnim(int gold)
+    public void UnlockLevel()
     {
-        var count = 15;
-        var earnedGold15 = earnedGold / count;
-        List<GameObject> list = new List<GameObject>();
-        for (int i = 0; i < count; i++)
-        {
-            var obj = Instantiate(goldPrefab,parent.transform.position,Quaternion.identity, parent);
-            list.Add(obj);
-        }
-        for (int i = 0; i < count; i++)
-        {
-            var x = distanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i*radius);
-            var y = distanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i*radius);
-            var newPos = new Vector3(x,y,0) + parent.transform.position;
-            list[i].transform.DOMove(newPos,.2f);
-        }
-        for (int i = 0; i < count; i++)
-        {
-            list[i].transform.DOMove(goldinScene.transform.position,.7f).SetEase(ease).OnComplete(()=> SetGold(gold));//.OnComplete(()=> goldFlare.Play());
-            yield return new WaitForSeconds(0.15f);
-        }
-        yield return new WaitForSeconds(.7f);
-        for (int i = 0; i < count; i++)
-        {
-            Destroy(list[i]);
-        }
-        nakitText.transform.DOScale(Vector3.one *1.5f,.4f).OnComplete(()=>nakitText.transform.DOScale(Vector3.one,.4f));
+        level ++;
+        allLevels[level].gameObject.SetActive(true);
+        asansor.activeLevels.Add(allLevels[level]);
+        unlockPrefab.transform.position = allLevels[level+1].transform.position;
+        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
+        // allLevels[level].SetActiveLevel();
     }
 }
