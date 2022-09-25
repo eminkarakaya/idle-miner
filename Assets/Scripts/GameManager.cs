@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class GameManager : MonoBehaviour , IDataPersistence
 {
-    public GameObject cvPrefab;
-    public List<Manager> allManagers;
     Banka banka;
     Asansor asansor;
     public GameObject unlockPrefab;

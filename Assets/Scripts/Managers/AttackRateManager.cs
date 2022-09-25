@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 public class AttackRateManager : Manager , LevelManager
 {
     protected override Sprite _ozellikSprite{get;set;}

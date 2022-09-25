@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
 public class YukcuManager : Manager, AsansorManager,BankaManager
 {
     protected override Sprite _ozellikSprite{get;set;}

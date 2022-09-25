@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Asansor : MonoBehaviour
 {
+    public Transform asansorManagerTransform;
     [SerializeField] Text asansorManagerCanvasTitleText;
     public GameObject asansorManagerCanvas;
     public Banka banka;
@@ -24,6 +25,7 @@ public class Asansor : MonoBehaviour
     [SerializeField] float toplamaSuresi;
     void Start()
     {
+        manager.transform.position = asansorManagerTransform.position;
         madenIslemeMachine = FindObjectOfType<MadenIslemeMachine>();
         banka = FindObjectOfType<Banka>();
         StartCoroutine(AsansorMovement());

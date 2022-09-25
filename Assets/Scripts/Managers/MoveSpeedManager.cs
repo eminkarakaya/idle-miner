@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 public class MoveSpeedManager : Manager , AsansorManager,BankaManager,LevelManager
 {
     protected override Sprite _ozellikSprite{get;set;}
