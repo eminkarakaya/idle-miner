@@ -20,7 +20,6 @@ public class ParaTasiyici : MonoBehaviour
     {
         madenIslemeMachine = FindObjectOfType<MadenIslemeMachine>();
         banka = FindObjectOfType<Banka>();
-        Debug.Log(GameManager.instance);
         MadenAl();
     }
     public void SetGold(int value){

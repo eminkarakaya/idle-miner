@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour , IDataPersistence
 {
+    public GameObject cvPrefab;
+    public List<Manager> allManagers;
     Banka banka;
     Asansor asansor;
     public GameObject unlockPrefab;
@@ -30,6 +32,16 @@ public class GameManager : MonoBehaviour
         unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
         asansor = FindObjectOfType<Asansor>();
     }
+    public void LoadData(GameData data)
+    {
+        nakit = data.nakit;
+        level = data.level;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.nakit = nakit;
+        data.level = level;
+    }
     public void SetGold(int count)
     {
         nakit += count;
@@ -38,11 +50,30 @@ public class GameManager : MonoBehaviour
     }
     public void UnlockLevel()
     {
-        level ++;
-        allLevels[level].gameObject.SetActive(true);
-        asansor.activeLevels.Add(allLevels[level]);
-        unlockPrefab.transform.position = allLevels[level+1].transform.position;
-        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
-        // allLevels[level].SetActiveLevel();
+        if(nakit < allLevels[level+1].unlockCost)
+        {
+            
+        }
+        else
+        {
+            level ++;
+            allLevels[level].gameObject.SetActive(true);
+            asansor.activeLevels.Add(allLevels[level]);
+            unlockPrefab.transform.position = allLevels[level+1].transform.position;
+            unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
+            // allLevels[level].SetActiveLevel();
+        }
+    }
+    public void AsansorManagerAta()
+    {
+
+    }
+    public void BankaManagerAta()
+    {
+        
+    }
+    public void LevelManagerAta()
+    {
+        
     }
 }

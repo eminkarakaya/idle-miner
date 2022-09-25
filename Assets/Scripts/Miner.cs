@@ -11,6 +11,7 @@ public enum State{
 
 public class Miner : MonoBehaviour
 {
+    public float moveSpeed;
     public Level level;
     bool isMining;
     public int tekVurustaToplananMaden;
@@ -42,7 +43,7 @@ public class Miner : MonoBehaviour
     }
     void GotoKasa()
     {
-        transform.DOMoveX(kasaPoint.position.x,2f).OnComplete(()=>
+        transform.DOMoveX(kasaPoint.position.x,moveSpeed).OnComplete(()=>
         {
             ParayiKasayaKoy(cantaDolulugu);
             GotoMine();
@@ -51,7 +52,7 @@ public class Miner : MonoBehaviour
     }
     void GotoMine()
     {
-        transform.DOMoveX(minePoint.position.x,2f).OnComplete(()=>Mining());
+        transform.DOMoveX(minePoint.position.x,moveSpeed).OnComplete(()=>Mining());
     }
     void Mining()
     {

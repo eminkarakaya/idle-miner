@@ -663,14 +663,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f722be02ee7a2d94d88377d26fffff0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 0
+  levelIyilestirDatas:
+  - madenciSayisi: 0
+    yurumeHizi: 0
+    attackRate: 0.1
+    iyilestirCost: 500
+    cantaKapasitesi: 100
+  - madenciSayisi: 0
+    yurumeHizi: 0
+    attackRate: 0.1
+    iyilestirCost: 500
+    cantaKapasitesi: 200
+  - madenciSayisi: 0
+    yurumeHizi: 0
+    attackRate: 0.1
+    iyilestirCost: 500
+    cantaKapasitesi: 300
+  - madenciSayisi: 0
+    yurumeHizi: 0
+    attackRate: 0.1
+    iyilestirCost: 500
+    cantaKapasitesi: 400
+  unlockCost: 0
   kasaText: {fileID: 7755498211637938860}
   kasa: 0
   manager: {fileID: 7755498211219798002}
   isciKapasitesi: 3
   level: 0
+  levelLevel: 0
   levelMiners:
   - {fileID: 7755498211219798001}
+  iyilestirCost: 0
 --- !u!1 &7755498211093550724
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7755498211134246323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7755498211219798000}
+        m_TargetAssemblyTypeName: Level, Assembly-CSharp
+        m_MethodName: LevelUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7755498211547418382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bffc1f2d27c1994e97b999834456e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
   level: {fileID: 0}
   tekVurustaToplananMaden: 30
   cantaDolulugu: 0

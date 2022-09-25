@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Banka : MonoBehaviour
 {
+    [SerializeField] Text bankaManagerCanvasTitleText;
+    public GameObject bankaManagerCanvas;
     public Manager manager;
     [SerializeField] int gold;
     [SerializeField] Text goldText;
@@ -19,5 +21,14 @@ public class Banka : MonoBehaviour
     public int GetGold()
     {
         return gold;
+    }
+    public void BankaManagerCanvas()
+    {
+        bankaManagerCanvas.GetComponent<Canvas>().enabled = true;
+        bankaManagerCanvasTitleText.text = "Asansor Yoneticisi";
+    }
+    public void Carpi()
+    {
+        bankaManagerCanvas.GetComponent<Canvas>().enabled = false;
     }
 }

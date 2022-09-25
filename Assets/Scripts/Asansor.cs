@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class Asansor : MonoBehaviour
 {
+    [SerializeField] Text asansorManagerCanvasTitleText;
+    public GameObject asansorManagerCanvas;
     public Banka banka;
     public Manager manager;
+    public AsansorManager asansorManager;
     MadenIslemeMachine madenIslemeMachine;
     [SerializeField] float asansorBosaltmaSuresi;
     public int temp = 1;
@@ -70,5 +73,14 @@ public class Asansor : MonoBehaviour
             yield return new WaitForSeconds(asansorHizi); 
         }
         AsansordenZemineAktarim();
+    }
+    public void AsansorManagerCanvas()
+    {
+        asansorManagerCanvas.GetComponent<Canvas>().enabled = true;
+        asansorManagerCanvasTitleText.text = "Asansor Yoneticisi";
+    }
+    public void Carpi()
+    {
+        asansorManagerCanvas.GetComponent<Canvas>().enabled = false;
     }
 }
