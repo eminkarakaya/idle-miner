@@ -5,19 +5,14 @@ using UnityEngine.UI;
 
 public abstract class Manager : MonoBehaviour
 {
-    public SpriteRenderer deneyimImage;
-    Color caylakColor = Color.red; 
-    Color kidemliColor = Color.green;
-    Color yoneticiColor = Color.blue;
-    // public Vector2Int carpanAraligi;
+    public bool atanmismi;
     public string isim;
-    // public List<Sprite> levelSprites{get => };
     protected abstract string _ozellikAdi{get;set;}
     public string ozellikAdi{get=>_ozellikAdi; set{}}
     protected abstract Sprite _ozellikSprite{get;set;}
     public Sprite ozellikSprite{get=>_ozellikSprite; set{}}
-    public int ozellikCarpani;
-    public Sprite sprite;
+    public float ozellikCarpani;
+    public Sprite managerSprite;
     public Deneyim deneyim;
     [SerializeField] Button activeBtn;
     [SerializeField] Button btn;
@@ -29,12 +24,10 @@ public abstract class Manager : MonoBehaviour
     [SerializeField] public float beklemeSuresiTemp;
     void Start()
     {
-        
         kullanmaSuresiTemp = kullanmaSuresi;
         text = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         btn = transform.GetChild(0).GetChild(1).GetComponent<Button>();
         activeBtn = transform.GetChild(0).GetChild(2).GetComponent<Button>();
-        deneyimImage = transform.GetChild(1).GetComponent<SpriteRenderer>();
     }
     public void SetOzellikCarpani(int value)
     {
@@ -57,6 +50,7 @@ public abstract class Manager : MonoBehaviour
         
     }
     protected abstract void UseSpecialSkill();
+    protected abstract void UseSpecialSkillTersi();
     IEnumerator KullanmaSuresi()
     {
         activeBtn.enabled = true;
@@ -70,6 +64,7 @@ public abstract class Manager : MonoBehaviour
         kullanmaSuresi = kullanmaSuresiTemp;
         btn.interactable = false;
         isActive = false;
+        UseSpecialSkillTersi(); 
         StartCoroutine(BeklemeSuresi());
     }
     IEnumerator BeklemeSuresi()

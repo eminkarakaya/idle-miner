@@ -6,8 +6,8 @@ public class CameraMove : MonoBehaviour
 {
     [SerializeField] float maxy,miny;
     Vector3 dragOrigin;
-
     Vector3 temp2 = Camera.main.transform.position;
+    
     void Update()
     {
         if(Input.GetMouseButtonDown(0))

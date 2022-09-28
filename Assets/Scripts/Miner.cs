@@ -11,16 +11,15 @@ public enum State{
 
 public class Miner : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveTime;
     public Level level;
     bool isMining;
     public int tekVurustaToplananMaden;
     [SerializeField] int cantaDolulugu;
     public float bagCapaity;
-    [SerializeField] float attackRate;
+    [SerializeField] public float attackRate;
     float attackRateTemp;
     [SerializeField] Transform kasaPoint , minePoint;
-    public float madencilikHizi;
     void Update()
     {
         attackRateTemp -= Time.deltaTime;
@@ -38,12 +37,12 @@ public class Miner : MonoBehaviour
    
     void ParayiKasayaKoy(int value)
     {
-        level.SetKasa(value + level.GetKasa());
+        level.SetKasaTopla(value);
         cantaDolulugu = 0;
     }
     void GotoKasa()
     {
-        transform.DOMoveX(kasaPoint.position.x,moveSpeed).OnComplete(()=>
+        transform.DOMoveX(kasaPoint.position.x,moveTime).OnComplete(()=>
         {
             ParayiKasayaKoy(cantaDolulugu);
             GotoMine();
@@ -52,7 +51,7 @@ public class Miner : MonoBehaviour
     }
     void GotoMine()
     {
-        transform.DOMoveX(minePoint.position.x,moveSpeed).OnComplete(()=>Mining());
+        transform.DOMoveX(minePoint.position.x,moveTime).OnComplete(()=>Mining());
     }
     void Mining()
     {

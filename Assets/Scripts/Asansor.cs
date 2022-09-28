@@ -20,12 +20,13 @@ public class Asansor : MonoBehaviour
     [SerializeField] Text asansorDoluluguTxt;
     public int asansorKapasitesi;
     public int asansorDolulugu;
-    [SerializeField] float asansorHizi;
+    [SerializeField] public float asansorSuresi;
     public float defaultToplamaSuresi;
     [SerializeField] float toplamaSuresi;
     void Start()
     {
-        manager.transform.position = asansorManagerTransform.position;
+        if(manager != null)
+            manager.transform.position = asansorManagerTransform.position;
         madenIslemeMachine = FindObjectOfType<MadenIslemeMachine>();
         banka = FindObjectOfType<Banka>();
         StartCoroutine(AsansorMovement());
@@ -39,9 +40,14 @@ public class Asansor : MonoBehaviour
         asansorDolulugu = value;
         asansorDoluluguTxt.text = asansorDolulugu.ToString();
     }
+    public void SetAsansorDoluluguTopla(int value)
+    {
+        asansorDolulugu += value;
+        asansorDoluluguTxt.text = asansorDolulugu.ToString();
+    }
     void AsansordenZemineAktarim()
     {
-        transform.DOMoveY(zemin.position.y,asansorHizi).OnComplete(()=> transform.DOMoveY(zemin.position.y,asansorBosaltmaSuresi)).OnComplete(()=>
+        transform.DOMoveY(zemin.position.y,asansorSuresi).OnComplete(()=> transform.DOMoveY(zemin.position.y,asansorBosaltmaSuresi)).OnComplete(()=>
         {
             madenIslemeMachine.SetGold(asansorDolulugu + madenIslemeMachine.GetGold());
             SetAsansorDolulugu(0);
@@ -56,23 +62,23 @@ public class Asansor : MonoBehaviour
             {
                 AsansordenZemineAktarim();
             }
-            transform.DOMoveY(activeLevels[i].transform.position.y+1,asansorHizi).
+            transform.DOMoveY(activeLevels[i].transform.position.y+1,asansorSuresi).
             OnComplete(()=>transform.DOMoveY(activeLevels[i].transform.position.y,toplamaSuresi)).
             OnComplete(()=>{
                 if(activeLevels[i].GetKasa() + asansorDolulugu >= asansorKapasitesi)
                 {
                     // activelevel[i].setkasa(asansorkapasitesi - asansordolulugu) asansorkapasitesi - asansordolulugu  
-                    activeLevels[i].SetKasa(activeLevels[i].GetKasa() - asansorKapasitesi - asansorDolulugu);
+                    activeLevels[i].SetKasa(activeLevels[i].GetKasa() - (asansorKapasitesi - asansorDolulugu));
                     SetAsansorDolulugu(asansorKapasitesi);
                     i = activeLevels.Count;
                 }
                 else
                 {
-                    SetAsansorDolulugu(activeLevels[i].GetKasa() + asansorDolulugu);
+                    SetAsansorDoluluguTopla(activeLevels[i].GetKasa());
                     activeLevels[i].SetKasa(0);
                 }
                 });
-            yield return new WaitForSeconds(asansorHizi); 
+            yield return new WaitForSeconds(asansorSuresi); 
         }
         AsansordenZemineAktarim();
     }

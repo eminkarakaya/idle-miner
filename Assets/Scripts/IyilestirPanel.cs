@@ -17,8 +17,8 @@ public class IyilestirPanel : MonoBehaviour
         for (int i = 0; i < level.levelMiners.Count; i++)
         {
             level.levelMiners[i].bagCapaity += level.levelIyilestirDatas[level.levelLevel].cantaKapasitesi;
-            level.levelMiners[i].madencilikHizi += level.levelIyilestirDatas[level.levelLevel].attackRate;
-            level.levelMiners[i].moveSpeed -= level.levelIyilestirDatas[level.levelLevel].yurumeHizi;
+            level.levelMiners[i].attackRate += level.levelIyilestirDatas[level.levelLevel].attackRate;
+            level.levelMiners[i].moveTime -= level.levelIyilestirDatas[level.levelLevel].yurumeHizi;
             level.iyilestirCost += level.levelIyilestirDatas[level.levelLevel].iyilestirCost;
         }
         LoadIyılestirDatas();
@@ -30,10 +30,10 @@ public class IyilestirPanel : MonoBehaviour
     }
     public void LoadIyılestirDatas()
     {
-        yurumeHiziText.text = level.levelMiners[0].moveSpeed.ToString();
+        yurumeHiziText.text = level.levelMiners[0].moveTime.ToString();
         yurumeHiziTextsonraki.text = level.levelIyilestirDatas[level.levelLevel+1].yurumeHizi.ToString();
 
-        attacRateText.text = level.levelMiners[0].madencilikHizi.ToString();
+        attacRateText.text = level.levelMiners[0].attackRate.ToString();
         attacRateTextSonraki.text = level.levelIyilestirDatas[level.levelLevel+1].attackRate.ToString();
 
         madenciSayisiText.text = level.isciKapasitesi.ToString();

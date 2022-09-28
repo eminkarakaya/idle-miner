@@ -11,6 +11,7 @@ public enum Deneyim{
 public class Cv : MonoBehaviour
 {
     AsansorManagerPanel asansorManagerPanel;
+    LevelAtamaPaneli levelAtamaPaneli;
     BankaYoneticiAtama bankaYoneticiAtama;
     [SerializeField] Button gorevlendirBtn;
     public Manager manager;
@@ -25,13 +26,14 @@ public class Cv : MonoBehaviour
     {
         bankaYoneticiAtama = FindObjectOfType<BankaYoneticiAtama>();
         asansorManagerPanel = FindObjectOfType<AsansorManagerPanel>();
+        levelAtamaPaneli = FindObjectOfType<LevelAtamaPaneli>();
         deneyimText.text = manager.deneyim.ToString();
         efektSuresiText.text = manager.kullanmaSuresi.ToString();
         ozellikText.text = manager.kullanmaSuresi.ToString();
         ozellikText.text = manager.ozellikCarpani.ToString();
         nameText.text = manager.isim;
         ozellikSprite.sprite = manager.ozellikSprite;
-        managerSprite.sprite = manager.sprite;
+        managerSprite.sprite = manager.managerSprite;
     }
     public void AsansorGorevlendir()
     {
@@ -40,7 +42,12 @@ public class Cv : MonoBehaviour
     }
     public void BankaGorevlendir()
     {
-        bankaYoneticiAtama.atanacakManager = manager;
+        bankaYoneticiAtama.atanacakManager = manager.GetComponent<YukcuManager>();
         bankaYoneticiAtama.atanacakCv = this;
+    }
+    public void LevelGorevlendir()
+    {
+        levelAtamaPaneli.atanacakManager = manager;
+        levelAtamaPaneli.atanacakCv = this;
     }
 }

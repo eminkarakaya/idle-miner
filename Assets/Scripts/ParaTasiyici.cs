@@ -11,9 +11,9 @@ public class ParaTasiyici : MonoBehaviour
     Banka banka;
     MadenIslemeMachine madenIslemeMachine;
     [SerializeField] Text dolulukText;
-    [SerializeField] int kapasite;
+    [SerializeField] public int kapasite;
     [SerializeField] int doluluk;
-    [Range(1,10)] [SerializeField] float moveSpeed;
+    [Range(1,10)] [SerializeField] float moveTime;
     [Range(1,10)] [SerializeField]  float dolumSuresi;
     [Range(1,10)] [SerializeField]  float bosaltimSuresi;
     void Start()
@@ -22,13 +22,14 @@ public class ParaTasiyici : MonoBehaviour
         banka = FindObjectOfType<Banka>();
         MadenAl();
     }
+    
     public void SetGold(int value){
         doluluk = value;
         dolulukText.text = doluluk.ToString();  
     }
     void BankayaGotur()
     {
-        transform.DOMoveX(bankaPos.position.x,moveSpeed).OnComplete(()=>transform.DOMoveX(bankaPos.position.x,bosaltimSuresi)).OnComplete(()=>
+        transform.DOMoveX(bankaPos.position.x,moveTime).OnComplete(()=>transform.DOMoveX(bankaPos.position.x,bosaltimSuresi)).OnComplete(()=>
         {
             GameManager.instance.SetGold(doluluk);
             SetGold(0);
@@ -37,7 +38,7 @@ public class ParaTasiyici : MonoBehaviour
     }
     void MadenAl()
     {
-        transform.DOMoveX(madenIslemeMachinePos.position.x,moveSpeed).OnComplete(()=>transform.DOMoveX(madenIslemeMachinePos.position.x,dolumSuresi)).OnComplete(()=>
+        transform.DOMoveX(madenIslemeMachinePos.position.x,moveTime).OnComplete(()=>transform.DOMoveX(madenIslemeMachinePos.position.x,dolumSuresi)).OnComplete(()=>
         {
             if(madenIslemeMachine.GetGold() >= kapasite)
             {

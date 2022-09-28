@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294255626217666474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.448, y: 0.715, z: 0.1849819}
+  m_LocalPosition: {x: 144.34653, y: 1555.4017, z: 0}
   m_LocalScale: {x: 0.3502605, y: 0.6158875, z: 1}
   m_Children:
   - {fileID: 1294255626453942900}
@@ -96,17 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca177fe203dcfd49a0be1ece22d146b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deneyimImage: {fileID: 0}
+  atanmismi: 0
   isim: Kursat5
   ozellikCarpani: 7
-  sprite: {fileID: 0}
+  managerSprite: {fileID: 0}
   deneyim: 2
-  activeBtn: {fileID: 0}
-  btn: {fileID: 0}
-  text: {fileID: 0}
+  activeBtn: {fileID: 1294255626917041972}
+  btn: {fileID: 1294255628310268283}
+  text: {fileID: 1294255627434767471}
   isActive: 0
   kullanmaSuresi: 4
   beklemeSuresiTemp: 20
+  _level: -1
+  oldAttckrate: 0
 --- !u!1 &1294255626453942901
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294255626917041970}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -381,7 +383,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294255627434767469}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 

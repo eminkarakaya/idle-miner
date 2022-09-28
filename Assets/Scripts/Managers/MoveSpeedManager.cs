@@ -7,6 +7,7 @@ public class MoveSpeedManager : Manager , AsansorManager,BankaManager,LevelManag
     public Asansor asansor { get; set; }
     public Banka banka { get; set; }
     public Level level { get; set; }
+    public float oldMove;
     void Start()
     {
         asansor = FindObjectOfType<Asansor>();
@@ -14,6 +15,14 @@ public class MoveSpeedManager : Manager , AsansorManager,BankaManager,LevelManag
     }
     protected override void UseSpecialSkill()
     {
+        oldMove = asansor.asansorSuresi;
         
+        asansor.asansorSuresi = asansor.asansorSuresi - (asansor.asansorSuresi *(ozellikCarpani/100));
+        Debug.Log(ozellikCarpani);
+        Debug.Log(asansor.asansorSuresi);
+    }
+    protected override void UseSpecialSkillTersi()
+    {
+        asansor.asansorSuresi = oldMove;   
     }
 }

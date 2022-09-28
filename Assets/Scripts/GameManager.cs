@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class GameManager : MonoBehaviour , IDataPersistence
 {
+    public Text levelManagerCanvasTitleText;
+    public GameObject levelManagerAtamaCanvas;
     Banka banka;
     Asansor asansor;
     public GameObject unlockPrefab;
@@ -28,15 +30,34 @@ public class GameManager : MonoBehaviour , IDataPersistence
     {
         banka = FindObjectOfType<Banka>();
         unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
-        asansor = FindObjectOfType<Asansor>();
+        nakitText.text = nakit.ToString();
     }
+    
     public void LoadData(GameData data)
     {
+        
+        // if(data.isFirst)
+        asansor = FindObjectOfType<Asansor>();
+            asansor.activeLevels.Clear();
+        //     return;
         nakit = data.nakit;
         level = data.level;
+        for (int i = 0; i < level+1; i++)
+        {
+            allLevels[i].gameObject.SetActive(true);
+            allLevels[i].kacinciLevel = i;
+            if(allLevels[i].manager != null)
+            {
+                allLevels[i].manager.GetComponent<AttackRateManager>()._level = i;
+            }
+            asansor.activeLevels.Add(allLevels[i]);
+        }
+        unlockPrefab.transform.position = allLevels[level+1].transform.position;
+        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
     }
     public void SaveData(ref GameData data)
     {
+        
         data.nakit = nakit;
         data.level = level;
     }
@@ -56,22 +77,11 @@ public class GameManager : MonoBehaviour , IDataPersistence
         {
             level ++;
             allLevels[level].gameObject.SetActive(true);
+            allLevels[level].kacinciLevel = level;
             asansor.activeLevels.Add(allLevels[level]);
             unlockPrefab.transform.position = allLevels[level+1].transform.position;
             unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
             // allLevels[level].SetActiveLevel();
         }
-    }
-    public void AsansorManagerAta()
-    {
-
-    }
-    public void BankaManagerAta()
-    {
-        
-    }
-    public void LevelManagerAta()
-    {
-        
     }
 }
