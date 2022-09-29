@@ -18,6 +18,10 @@ public class AsansorManagerPanel : MonoBehaviour , IDataPersistence
     Asansor asansor;
     [SerializeField] Transform parent;
     public Transform gorevlendirilmisParent;
+    void Start()
+    {
+        asansor = FindObjectOfType<Asansor>();
+    }
     public void LoadData(GameData data)
     {    
         asansor = FindObjectOfType<Asansor>();
@@ -66,7 +70,6 @@ public class AsansorManagerPanel : MonoBehaviour , IDataPersistence
         data.asansorOzellikSprite.Clear();
         for (int i = 0; i < asansorManagers.Count; i++)
         { 
-            Debug.Log(i);
             // newDatas.Add(newData);
             // Debug.Log(data.bankaManagerDatas[i].beklemeSuresiTemp);
             data.asansorAtanmismi.Add(asansorManagers[i].atanmismi);

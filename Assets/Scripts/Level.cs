@@ -5,18 +5,15 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour , IDataPersistence
 {
-    [System.Serializable]
-    public struct IyilestirDatas{
-        public int madenciSayisi;
-        public float yurumeHizi;
-        public float attackRate;
-        public int iyilestirCost;
-        public int cantaKapasitesi;
-    }
+    public int madenciSayisi;
+    public float yurumeHizi;
+    public float attackRate;
+    public int iyilestirCost;
+    public int cantaKapasitesi;
+    
     public int kacinciLevel;
     LevelAtamaPaneli levelAtamaPaneli;
     public Transform atanmisCvParent;
-    [SerializeField] public List<IyilestirDatas> levelIyilestirDatas;
     public Transform managerPlace;
     IyilestirPanel iyilestirPanel;
     public int unlockCost;
@@ -27,38 +24,31 @@ public class Level : MonoBehaviour , IDataPersistence
     public int isciKapasitesi;
     public int levelLevel;
     public List<Miner> levelMiners;
-    public int iyilestirCost;
     void Start()
     {
         levelAtamaPaneli = FindObjectOfType<LevelAtamaPaneli>();
-        iyilestirPanel = FindObjectOfType<IyilestirPanel>();
-        // iyilestirPanel.gameObject.GetComponent<Canvas>().enabled = false;
-        // manager.transform.SetParent(GameManager.instance.allLevels[levelAtamaPaneli.chosenLevel].atanmisCvParent);
-        // var obj = Instantiate(levelAtamaPaneli.managerPrefab,transform.position,Quaternion.identity,GameManager.instance.allLevels[levelAtamaPaneli.chosenLevel].atanmisCvParent);
-        
+        iyilestirPanel = FindObjectOfType<IyilestirPanel>();   
     }
     
     public void LoadData(GameData data)
     {
-        // if(data.isFirst)
-        //     return;
         levelLevel = data.levelLevel[kacinciLevel];
         manager = data.levelManager;
     }
     public void SaveData(ref GameData data)
     {
-        
         data.levelLevel[kacinciLevel] = levelLevel;
         data.levelManager = manager;
     }
     public void SetKasa(int value)
     {
         kasa = value;
-        kasaText.text = kasa.ToString();
-    }public void SetKasaTopla(int value)
+        kasaText.text = GameManager.instance.CaclText(kasa);
+    }
+    public void SetKasaTopla(int value)
     {
         kasa += value;
-        kasaText.text = kasa.ToString();
+        kasaText.text = GameManager.instance.CaclText(kasa);
     }
     public int GetKasa()
     {

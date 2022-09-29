@@ -22,6 +22,7 @@ public class BankaYoneticiAtama : MonoBehaviour, IDataPersistence
     void Start()
     {
 
+        banka = FindObjectOfType<Banka>();
     }
     public void LoadData(GameData data)
     {    

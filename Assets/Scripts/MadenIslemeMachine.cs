@@ -11,7 +11,7 @@ public class MadenIslemeMachine : MonoBehaviour
     public void SetGold(int value)
     {
         gold = value;
-        goldText.text = gold.ToString();
+        goldText.text = GameManager.instance.CaclText(gold);
     }
     public int GetGold()
     {

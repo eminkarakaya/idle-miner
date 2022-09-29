@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 public class GameManager : MonoBehaviour , IDataPersistence
 {
     public Text levelManagerCanvasTitleText;
@@ -29,8 +30,8 @@ public class GameManager : MonoBehaviour , IDataPersistence
     void Start()
     {
         banka = FindObjectOfType<Banka>();
-        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
-        nakitText.text = nakit.ToString();
+        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = CaclText(allLevels[level+1].unlockCost);
+        nakitText.text = CaclText(nakit);
     }
     
     public void LoadData(GameData data)
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour , IDataPersistence
             asansor.activeLevels.Add(allLevels[i]);
         }
         unlockPrefab.transform.position = allLevels[level+1].transform.position;
-        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
+        unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = CaclText(allLevels[level+1].unlockCost);
     }
     public void SaveData(ref GameData data)
     {
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour , IDataPersistence
     public void SetGold(int count)
     {
         nakit += count;
-        nakitText.text = nakit.ToString();
+        nakitText.text = CaclText(nakit);
         GoldAnim.instance.EarnGoldAnim2(count,5,banka.transform);
     }
     public void UnlockLevel()
@@ -80,8 +81,36 @@ public class GameManager : MonoBehaviour , IDataPersistence
             allLevels[level].kacinciLevel = level;
             asansor.activeLevels.Add(allLevels[level]);
             unlockPrefab.transform.position = allLevels[level+1].transform.position;
-            unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = allLevels[level+1].unlockCost.ToString();
+            unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = CaclText(allLevels[level+1].unlockCost);
             // allLevels[level].SetActiveLevel();
         }
+    }
+    public string CaclText(float value)
+    {
+        if(value >= 1000 && value < 1000000)
+        {
+            return String.Format("{0:0.0}",value /1000 ) + "k";
+        }
+        else if(value >= 1000000 && value < 1000000000)
+        {
+            return String.Format("{0:0.0}",value /1000000) + "m";
+        }
+        else if(value >= 1000000000 && value < 1000000000000)
+        { 
+            return String.Format("{0:0.0}",value / 1000000000) + "b";
+        }
+        else if(value >= 1000000000000 && value < 1000000000000000)
+        { 
+            return String.Format("{0:0.0}",value / 1000000000000) + "t";
+        }
+        else if(value >= 1000000000000000 && value < 1000000000000000000)
+        { 
+            return String.Format("{0:0.0}",value / 1000000000000000) + "aa";
+        }
+        else if(value >= 1000000000000000000)
+        { 
+            return String.Format("{0:0.0}",value / 1000000000000000) + "ab";
+        }
+        return value.ToString();
     }
 }

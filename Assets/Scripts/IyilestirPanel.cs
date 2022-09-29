@@ -1,26 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IyilestirPanel : MonoBehaviour
+public class IyilestirPanel : MonoBehaviour 
 {
+    float madenCikarmaArtisYuzdesi = 15;
+    float moveSpeedArtisYuzdesi = 1;
+    float cantaKapasitesiArtisYuzdesi = 20;
+    long costArtisYuzdesi = 25;
     [SerializeField] GameObject iyilestirPanelObj;
     [SerializeField] Text yurumeHiziText,yurumeHiziTextsonraki
         ,attacRateText,attacRateTextSonraki,cantaKapasitesiText
         ,cantaKapasitesiTextSonraki,madenciSayisiText,madenciSayisiTextSonraki,iyilestirCostTexti,titleText;
     [SerializeField] Slider slider;
     public Level level;
+    void Start()
+    {
+        for (int j = 0; j < GameManager.instance.allLevels.Count; j++)
+        {
+            for (int i = 0; i < GameManager.instance.allLevels[j].levelMiners.Count; i++)
+            {
+                for (int k = 0; k < GameManager.instance.allLevels[j].levelLevel; k++)
+                {
+                    GameManager.instance.allLevels[j].levelMiners[i].bagCapaity = ((int) (GameManager.instance.allLevels[j].levelMiners[i].bagCapaity * (cantaKapasitesiArtisYuzdesi/100))) + GameManager.instance.allLevels[j].levelMiners[i].bagCapaity ;
+                    GameManager.instance.allLevels[j].levelMiners[i].attackRate = ((GameManager.instance.allLevels[j].levelMiners[i].attackRate * (madenCikarmaArtisYuzdesi/100)))+ GameManager.instance.allLevels[j].levelMiners[i].attackRate ; 
+                    GameManager.instance.allLevels[j].levelMiners[i].moveTime = ((GameManager.instance.allLevels[j].levelMiners[i].moveTime * (moveSpeedArtisYuzdesi/100))) - GameManager.instance.allLevels[j].levelMiners[i].moveTime ;
+                }
+            }
+            GameManager.instance.allLevels[j].iyilestirCost = (int) (GameManager.instance.allLevels[j].iyilestirCost + (GameManager.instance.allLevels[j].iyilestirCost * (costArtisYuzdesi/100)));
+        }
+            
+        LoadIyılestirDatas();
+    }
     public void ClickIyilestirBtn()
     {
         level.levelLevel++;
         for (int i = 0; i < level.levelMiners.Count; i++)
         {
-            level.levelMiners[i].bagCapaity += level.levelIyilestirDatas[level.levelLevel].cantaKapasitesi;
-            level.levelMiners[i].attackRate += level.levelIyilestirDatas[level.levelLevel].attackRate;
-            level.levelMiners[i].moveTime -= level.levelIyilestirDatas[level.levelLevel].yurumeHizi;
-            level.iyilestirCost += level.levelIyilestirDatas[level.levelLevel].iyilestirCost;
+            level.levelMiners[i].bagCapaity += (level.levelMiners[i].bagCapaity * (cantaKapasitesiArtisYuzdesi/100));
+            level.levelMiners[i].attackRate += level.levelMiners[i].attackRate * (madenCikarmaArtisYuzdesi/100); 
+            level.levelMiners[i].moveTime -= level.levelMiners[i].moveTime * (moveSpeedArtisYuzdesi/100);
         }
+        level.iyilestirCost = (int) (level.iyilestirCost + (level.iyilestirCost * (costArtisYuzdesi/100)));
         LoadIyılestirDatas();
     }
     public void CarpiBtn()
@@ -30,20 +53,20 @@ public class IyilestirPanel : MonoBehaviour
     }
     public void LoadIyılestirDatas()
     {
-        yurumeHiziText.text = level.levelMiners[0].moveTime.ToString();
-        yurumeHiziTextsonraki.text = level.levelIyilestirDatas[level.levelLevel+1].yurumeHizi.ToString();
+        yurumeHiziText.text =String.Format("{0:0.00}", level.levelMiners[0].moveTime) + "s";
+        yurumeHiziTextsonraki.text =  "-" + String.Format("{0:0.00}",level.levelMiners[0].moveTime * (moveSpeedArtisYuzdesi/100))+ "s";
 
-        attacRateText.text = level.levelMiners[0].attackRate.ToString();
-        attacRateTextSonraki.text = level.levelIyilestirDatas[level.levelLevel+1].attackRate.ToString();
+        attacRateText.text = String.Format("{0:0.0}", level.levelMiners[0].attackRate) + "/s";
+        attacRateTextSonraki.text =  "+" + String.Format("{0:0.0}", level.levelMiners[0].attackRate * (madenCikarmaArtisYuzdesi/100)) + "/s";
 
         madenciSayisiText.text = level.isciKapasitesi.ToString();
-        madenciSayisiTextSonraki.text = level.levelIyilestirDatas[level.levelLevel+1].madenciSayisi.ToString();
+        madenciSayisiTextSonraki.text = 0.ToString();
 
-        cantaKapasitesiText.text = level.levelMiners[0].bagCapaity.ToString();
-        cantaKapasitesiTextSonraki.text = level.levelIyilestirDatas[level.levelLevel+1].cantaKapasitesi.ToString();
+        cantaKapasitesiText.text = GameManager.instance.CaclText(level.levelMiners[0].bagCapaity);
+        cantaKapasitesiTextSonraki.text =  "+" + GameManager.instance.CaclText ((long) (level.levelMiners[0].bagCapaity * (cantaKapasitesiArtisYuzdesi/100)));
 
         titleText.text = "Maden Kuyusu " + level + " " + level.levelLevel+". Seviye";
-        iyilestirCostTexti.text = level.levelIyilestirDatas[level.levelLevel].iyilestirCost.ToString();
+        iyilestirCostTexti.text = "+" + GameManager.instance.CaclText(level.iyilestirCost);
     }
     public void LevelUpButton()
     {

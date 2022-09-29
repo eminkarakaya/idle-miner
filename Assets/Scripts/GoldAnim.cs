@@ -24,11 +24,11 @@ public class GoldAnim : MonoBehaviour
         gold += count;
         goldText.text = gold.ToString();
     }
-    public void EarnGoldAnim2(int earnedGold , int count , Transform transform)
+    public void EarnGoldAnim2(float earnedGold , int count , Transform transform)
     {
         var pos = new Vector3(transform.position.x,transform.position.y+1,transform.position.z);
         var obj = Instantiate(goldAnimPrefab,transform.position,Quaternion.identity);
-        obj.transform.GetChild(0).GetComponent<TextMesh>().text = earnedGold.ToString();
+        obj.transform.GetChild(0).GetComponent<TextMesh>().text = GameManager.instance.CaclText(earnedGold);
         obj.transform.DOMove(pos,1f);
         Color color = new Color(255,255,255,0);
         obj.GetComponent<SpriteRenderer>().DOColor(color,1);

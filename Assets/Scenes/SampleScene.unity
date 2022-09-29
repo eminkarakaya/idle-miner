@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14165.843
+      value: -26765.941
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -2592,8 +2592,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: attackRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: yurumeHizi
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
       propertyPath: kacinciLevel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: iyilestirCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: madenciSayisi
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: cantaKapasitesi
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
@@ -3396,7 +3416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -76846.01
+      value: -89446.65
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -4073,7 +4093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -136089.81
+      value: -152025.42
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -4693,7 +4713,11 @@ PrefabInstance:
       objectReference: {fileID: 1020329072}
     - target: {fileID: 5166215656716023261, guid: a31be0722ed0b384f90d9c6e47b9b609, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166215658073594312, guid: a31be0722ed0b384f90d9c6e47b9b609, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5166215658073594313, guid: a31be0722ed0b384f90d9c6e47b9b609, type: 3}
       propertyPath: m_Pivot.x
@@ -4785,7 +4809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5166215658073594317, guid: a31be0722ed0b384f90d9c6e47b9b609, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31be0722ed0b384f90d9c6e47b9b609, type: 3}
@@ -5042,6 +5066,26 @@ PrefabInstance:
     - target: {fileID: 7755498210813388450, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: yurumeHizi
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: iyilestirCost
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: madenciSayisi
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755498211219798000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}
+      propertyPath: cantaKapasitesi
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42164aff1f73c5f4dbc9756f1596c5d9, type: 3}

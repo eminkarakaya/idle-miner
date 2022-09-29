@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameData 
 {       
+        public float madenCikarmaArtisYuzdesi;
+        public float moveSpeedArtisYuzdesi;
+        public float cantaKapasitesiArtisYuzdesi;
+        public float costArtisYuzdesi;
         public List<int> _level;    
         public List<bool> levelAtanmismi;
         public List< float> levelOzellikCarpani;

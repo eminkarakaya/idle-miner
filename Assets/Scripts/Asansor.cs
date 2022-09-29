@@ -38,12 +38,12 @@ public class Asansor : MonoBehaviour
     public void SetAsansorDolulugu(int value)
     {
         asansorDolulugu = value;
-        asansorDoluluguTxt.text = asansorDolulugu.ToString();
+        asansorDoluluguTxt.text = GameManager.instance.CaclText(asansorDolulugu);
     }
     public void SetAsansorDoluluguTopla(int value)
     {
         asansorDolulugu += value;
-        asansorDoluluguTxt.text = asansorDolulugu.ToString();
+        asansorDoluluguTxt.text = GameManager.instance.CaclText(asansorDolulugu);
     }
     void AsansordenZemineAktarim()
     {

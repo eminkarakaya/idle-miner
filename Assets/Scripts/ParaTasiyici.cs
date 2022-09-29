@@ -25,7 +25,7 @@ public class ParaTasiyici : MonoBehaviour
     
     public void SetGold(int value){
         doluluk = value;
-        dolulukText.text = doluluk.ToString();  
+        dolulukText.text = GameManager.instance.CaclText(doluluk);
     }
     void BankayaGotur()
     {
