@@ -28,17 +28,13 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
     }
     public void LoadData(GameData data)
     {    
-        // if(data.isFirst)
-        //     return;
         for (int i = 0; i < data.levelBeklemeSuresiTemp.Count; i++)
         {
             var cv = Instantiate(cvPrefab,transform.position,Quaternion.identity,parent);
             var manager = Instantiate(managerPrefab,new Vector3(-10,10,0),Quaternion.identity);
             levelManagers.Add(manager.GetComponent<AttackRateManager>());
-            // bankaManagers[i] = data.bankaManagerDatas[i].manager.GetComponent<YukcuManager>();
             manager.GetComponent<AttackRateManager>().beklemeSuresiTemp = data.levelBeklemeSuresiTemp[i];
             manager.GetComponent<AttackRateManager>().deneyim = data.levelDeneyim[i];
-            // manager.GetComponent<AttackRateManager>().atanmismi = data.leve[i];
             manager.GetComponent<AttackRateManager>()._level = data._level[i];
             if(manager.GetComponent<AttackRateManager>()._level != -1)
             {
@@ -46,14 +42,15 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
                 GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].manager = manager.GetComponent<AttackRateManager>();
                 manager.GetComponent<AttackRateManager>().transform.position = GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].managerPlace.position;
             }
-            // _manager.isim = data.bankaManagerDatas[i].;
             manager.GetComponent<AttackRateManager>().kullanmaSuresi = data.levelKullanmaSuresi[i];
             manager.GetComponent<AttackRateManager>().managerSprite = data.levelManagerSprite[i];
+            
+
             manager.GetComponent<AttackRateManager>().ozellikCarpani = data.levelOzellikCarpani[i];
             manager.GetComponent<AttackRateManager>().oldAttckrate = data.levelOldAttackRate[i];
             manager.GetComponent<AttackRateManager>().ozellikSprite = data.levelOzellikSprite[i];
             cv.GetComponent<Cv>().manager = manager.GetComponent<Manager>();
-            cv.GetComponent<Cv>().manager.GetComponent<SpriteRenderer>().sprite = data.levelOzellikSprite[i];
+            // cv.GetComponent<Cv>().manager.GetComponent<SpriteRenderer>().sprite = data.levelOzellikSprite[i];
         }
         // Debug.Log(data.bankaManagerDatas[0].manager);
     }
@@ -118,6 +115,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
             if(atanacakManager.TryGetComponent(out AttackRateManager attackRateManager))
             {
                 attackRateManager._level = chosenLevel;
+                attackRateManager.level = GameManager.instance.allLevels[attackRateManager._level];
             }
             if(gorevlendirilmisManager.manager.TryGetComponent(out AttackRateManager attackRateManager1))
             {
@@ -145,6 +143,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
             if(atanacakManager.TryGetComponent(out AttackRateManager attackRateManager))
             {
                 attackRateManager._level = chosenLevel;
+                attackRateManager.level = GameManager.instance.allLevels[attackRateManager._level];
             }
             // levelManagers.Remove(atanacakManager);
         }

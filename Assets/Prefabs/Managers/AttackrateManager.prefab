@@ -99,7 +99,7 @@ MonoBehaviour:
   atanmismi: 0
   isim: Kursat5
   ozellikCarpani: 7
-  managerSprite: {fileID: 0}
+  managerSprite: {fileID: 21300000, guid: e70da6afc30bfe644be22c90d0707f32, type: 3}
   deneyim: 2
   activeBtn: {fileID: 1294255626917041972}
   btn: {fileID: 1294255628310268283}

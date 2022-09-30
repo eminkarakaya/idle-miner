@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -101943.21
+      value: -133899.92
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -864,6 +864,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &117502076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7482134574919534721, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
+  m_PrefabInstance: {fileID: 7161855510267844485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &122379336 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6205133240681684226, guid: adcc90ccfc4d9de4187532408736501d, type: 3}
@@ -1225,11 +1230,6 @@ MonoBehaviour:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
   m_PrefabInstance: {fileID: 3164181561250299886}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &420372473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7482134574919534721, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
-  m_PrefabInstance: {fileID: 3005409}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &453166635
 GameObject:
@@ -2780,9 +2780,9 @@ MonoBehaviour:
   distanceFactor: 40
   radius: 40
   goldPrefab: {fileID: 7373092868562032332, guid: 1172950001e990f458513c6c8510f61b, type: 3}
-  goldinScene: {fileID: 420372473}
+  goldinScene: {fileID: 117502076}
   ease: 8
-  goldText: {fileID: 534722387}
+  goldText: {fileID: 7161855510267844487}
   parent: {fileID: 453166639}
   goldOlusturulcakTransform: {fileID: 964823986}
 --- !u!114 &1446017888
@@ -2798,6 +2798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleMoneyCanvas: {fileID: 215864571}
+  idleMoneyText: {fileID: 0}
   levelManagerCanvasTitleText: {fileID: 353104420}
   levelManagerAtamaCanvas: {fileID: 2118453173}
   unlockPrefab: {fileID: 1570276973}
@@ -3456,7 +3457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -164626.69
+      value: -196583.3
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -4133,7 +4134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -247102.97
+      value: -287517.16
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -5005,22 +5006,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2344786200417242635, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
-      propertyPath: m_Text
-      value: "NAK\u0130T"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2344786200417242635, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7078981659609780125, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7078981659609780125, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 109
-      objectReference: {fileID: 0}
     - target: {fileID: 7744120180396012517, guid: 7a8c55be903ea3a4a93302b0873bff41, type: 3}
       propertyPath: m_Name
       value: Nakit
@@ -5266,7 +5251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8815607664317636462, guid: f380cc81bc45f7340a6c463e07d88447, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 391
+      value: -323
       objectReference: {fileID: 0}
     - target: {fileID: 8815607664706842888, guid: f380cc81bc45f7340a6c463e07d88447, type: 3}
       propertyPath: m_Pivot.x

@@ -7,8 +7,14 @@ public class AttackRateManager : Manager , LevelManager
     [SerializeField] public Level level { get; set; }
     [SerializeField] public int _level = -1;
     public float oldAttckrate;
+    void Start()
+    {
+            GetComponent<SpriteRenderer>().sprite = managerSprite;
+    }
     protected override void UseSpecialSkill()
     {
+        Debug.Log(level.levelMiners.Count);
+        Debug.Log(level);
         oldAttckrate = level.levelMiners[0].attackRate;
         for (int i = 0; i < level.levelMiners.Count; i++)
         {

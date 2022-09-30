@@ -80,6 +80,7 @@ public abstract class Manager : MonoBehaviour
             text.text = beklemeSuresi.ToString();
         }
         text.enabled = false;
+        activeBtn.enabled = false;
         btn.GetComponent<Image>().enabled = true;
     }
     public void OzelHareketBtn()

@@ -42,11 +42,9 @@ public class GameData
     public int nakit;
     public List<int> levelLevel;
     public Manager levelManager;
-    public bool isFirst;
     public GameData()
     {
         nakit = 0;
-        isFirst = true;
         levelAtanmismi = new List<bool>();
          levelOzellikCarpani = new List<float>();
          levelDeneyim = new List<Deneyim>();

@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class IyilestirPanel : MonoBehaviour 
 {
+
     Asansor asansor;
     float madenCikarmaArtisYuzdesi = 15;
     float moveSpeedArtisYuzdesi = 1;
@@ -26,7 +25,6 @@ public class IyilestirPanel : MonoBehaviour
             {
                 for (int k = 0; k < asansor.activeLevels[j].levelLevel; k++)
                 {
-                Debug.Log(asansor.activeLevels[j]+ " miner");
                     asansor.activeLevels[j].levelMiners[i].bagCapaity += ((int) (asansor.activeLevels[j].levelMiners[i].bagCapaity * (cantaKapasitesiArtisYuzdesi/100)));
                     asansor.activeLevels[j].levelMiners[i].attackRate += ((asansor.activeLevels[j].levelMiners[i].attackRate * (madenCikarmaArtisYuzdesi/100))); 
                     asansor.activeLevels[j].levelMiners[i].moveTime -= ((asansor.activeLevels[j].levelMiners[i].moveTime * (moveSpeedArtisYuzdesi/100)));

@@ -55,7 +55,6 @@ public class DataPersistanceManager : MonoBehaviour
     void OnApplicationQuit()
     {
         SaveGame();
-        gameData.isFirst = false;
     }
     List<IDataPersistence> FindAllIDataPersistenceObjects()
     {
