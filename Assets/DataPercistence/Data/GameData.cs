@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameData 
 {       
+    public string sonGirisTarihi;
         public float madenCikarmaArtisYuzdesi;
         public float moveSpeedArtisYuzdesi;
         public float cantaKapasitesiArtisYuzdesi;
@@ -76,5 +77,6 @@ public class GameData
         levelLevel = new List<int>(){1,1};
         levelManager = null;
         _level = new List<int>();
+        sonGirisTarihi = null;
     }
 }

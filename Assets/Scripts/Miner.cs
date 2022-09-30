@@ -11,6 +11,7 @@ public enum State{
 
 public class Miner : MonoBehaviour
 {
+    public const float oneSec = 1;
     public float moveTime;
     public Level level;
     bool isMining;
@@ -22,12 +23,11 @@ public class Miner : MonoBehaviour
     [SerializeField] Transform kasaPoint , minePoint;
     void Update()
     {
-        attackRateTemp -= Time.deltaTime;
-        if(attackRateTemp < 0 && isMining)
-        {
-            
-            attackRateTemp = attackRate;
-        }
+        // attackRateTemp -= Time.deltaTime;
+        // if(attackRateTemp < 0 && isMining)
+        // {
+        //     attackRateTemp = attackRate;
+        // }
     }
     void Start()
     {
@@ -60,13 +60,17 @@ public class Miner : MonoBehaviour
         {
             while(cantaDolulugu < bagCapaity)
             {
-                yield return new WaitForSeconds(attackRate);
+                yield return new WaitForSeconds(oneSec/attackRate);
                 cantaDolulugu += tekVurustaToplananMaden;
             }
             GotoKasa();
             isMining = false;
         }
         StartCoroutine(HitMine());
+    }
+    public float GetBirSaniyedeToplananMaden()
+    {
+        return  bagCapaity/((bagCapaity/tekVurustaToplananMaden) * (oneSec/attackRate)) + moveTime;
     }
 
 }

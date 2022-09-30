@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class IyilestirPanel : MonoBehaviour 
 {
+    Asansor asansor;
     float madenCikarmaArtisYuzdesi = 15;
     float moveSpeedArtisYuzdesi = 1;
     float cantaKapasitesiArtisYuzdesi = 20;
@@ -18,18 +19,20 @@ public class IyilestirPanel : MonoBehaviour
     public Level level;
     void Start()
     {
-        for (int j = 0; j < GameManager.instance.allLevels.Count; j++)
+        asansor = FindObjectOfType<Asansor>();
+        for (int j = 0; j < asansor.activeLevels.Count; j++)
         {
-            for (int i = 0; i < GameManager.instance.allLevels[j].levelMiners.Count; i++)
+            for (int i = 0; i < asansor.activeLevels[j].levelMiners.Count; i++)
             {
-                for (int k = 0; k < GameManager.instance.allLevels[j].levelLevel; k++)
+                for (int k = 0; k < asansor.activeLevels[j].levelLevel; k++)
                 {
-                    GameManager.instance.allLevels[j].levelMiners[i].bagCapaity = ((int) (GameManager.instance.allLevels[j].levelMiners[i].bagCapaity * (cantaKapasitesiArtisYuzdesi/100))) + GameManager.instance.allLevels[j].levelMiners[i].bagCapaity ;
-                    GameManager.instance.allLevels[j].levelMiners[i].attackRate = ((GameManager.instance.allLevels[j].levelMiners[i].attackRate * (madenCikarmaArtisYuzdesi/100)))+ GameManager.instance.allLevels[j].levelMiners[i].attackRate ; 
-                    GameManager.instance.allLevels[j].levelMiners[i].moveTime = ((GameManager.instance.allLevels[j].levelMiners[i].moveTime * (moveSpeedArtisYuzdesi/100))) - GameManager.instance.allLevels[j].levelMiners[i].moveTime ;
+                Debug.Log(asansor.activeLevels[j]+ " miner");
+                    asansor.activeLevels[j].levelMiners[i].bagCapaity += ((int) (asansor.activeLevels[j].levelMiners[i].bagCapaity * (cantaKapasitesiArtisYuzdesi/100)));
+                    asansor.activeLevels[j].levelMiners[i].attackRate += ((asansor.activeLevels[j].levelMiners[i].attackRate * (madenCikarmaArtisYuzdesi/100))); 
+                    asansor.activeLevels[j].levelMiners[i].moveTime -= ((asansor.activeLevels[j].levelMiners[i].moveTime * (moveSpeedArtisYuzdesi/100)));
                 }
             }
-            GameManager.instance.allLevels[j].iyilestirCost = (int) (GameManager.instance.allLevels[j].iyilestirCost + (GameManager.instance.allLevels[j].iyilestirCost * (costArtisYuzdesi/100)));
+            asansor.activeLevels[j].iyilestirCost = (int) (asansor.activeLevels[j].iyilestirCost + (asansor.activeLevels[j].iyilestirCost * (costArtisYuzdesi/100)));
         }
             
         LoadIyılestirDatas();

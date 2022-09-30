@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Asansor : MonoBehaviour
 {
+    public const float fullAsansorBolastmaSuresi = 1;
     public Transform asansorManagerTransform;
     [SerializeField] Text asansorManagerCanvasTitleText;
     public GameObject asansorManagerCanvas;
@@ -31,6 +32,14 @@ public class Asansor : MonoBehaviour
         banka = FindObjectOfType<Banka>();
         StartCoroutine(AsansorMovement());
     }
+    public float GetAsansordenZemineAktarimSuresi()
+    {
+        return fullAsansorBolastmaSuresi / (asansorKapasitesi / asansorDolulugu);
+    }
+    public float GetToplamaSuresi(Level level)
+    {
+        return fullAsansorBolastmaSuresi / (asansorKapasitesi / level.GetKasa());
+    }
     public void SetAsansorKapasitesi(int value)
     {
         asansorKapasitesi = value;
@@ -47,7 +56,7 @@ public class Asansor : MonoBehaviour
     }
     void AsansordenZemineAktarim()
     {
-        transform.DOMoveY(zemin.position.y,asansorSuresi).OnComplete(()=> transform.DOMoveY(zemin.position.y,asansorBosaltmaSuresi)).OnComplete(()=>
+        transform.DOMoveY(zemin.position.y,asansorSuresi).OnComplete(()=> transform.DOMoveY(zemin.position.y,GetAsansordenZemineAktarimSuresi())).OnComplete(()=>
         {
             madenIslemeMachine.SetGold(asansorDolulugu + madenIslemeMachine.GetGold());
             SetAsansorDolulugu(0);
@@ -63,7 +72,7 @@ public class Asansor : MonoBehaviour
                 AsansordenZemineAktarim();
             }
             transform.DOMoveY(activeLevels[i].transform.position.y+1,asansorSuresi).
-            OnComplete(()=>transform.DOMoveY(activeLevels[i].transform.position.y,toplamaSuresi)).
+            OnComplete(()=>transform.DOMoveY(activeLevels[i].transform.position.y,GetToplamaSuresi(activeLevels[i]))).
             OnComplete(()=>{
                 if(activeLevels[i].GetKasa() + asansorDolulugu >= asansorKapasitesi)
                 {
@@ -90,5 +99,9 @@ public class Asansor : MonoBehaviour
     public void Carpi()
     {
         asansorManagerCanvas.GetComponent<Canvas>().enabled = false;
+    }
+    public float AsansorBirSaniyedeToplananMaden()
+    {
+        return asansorKapasitesi / ((activeLevels.Count * asansorSuresi) + (fullAsansorBolastmaSuresi*2));
     }
 }

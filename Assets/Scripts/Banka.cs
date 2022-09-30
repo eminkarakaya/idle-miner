@@ -45,4 +45,5 @@ public class Banka : MonoBehaviour ,IDataPersistence
     {
         bankaManagerCanvas.GetComponent<Canvas>().enabled = false;
     }
+   
 }

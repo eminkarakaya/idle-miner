@@ -53,4 +53,8 @@ public class ParaTasiyici : MonoBehaviour
             BankayaGotur();
         });
     }
+    public float BankaBirSaniyedeToplananMaden()
+    {
+        return kapasite / (moveTime + (bosaltimSuresi*2));
+    }
 }

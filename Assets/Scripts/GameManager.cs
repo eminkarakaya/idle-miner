@@ -6,6 +6,9 @@ using DG.Tweening;
 using System;
 public class GameManager : MonoBehaviour , IDataPersistence
 {
+    [SerializeField] public GameObject idleMoneyCanvas;
+    Text idleMoneyText;
+    Button carpi;
     public Text levelManagerCanvasTitleText;
     public GameObject levelManagerAtamaCanvas;
     Banka banka;
@@ -23,15 +26,24 @@ public class GameManager : MonoBehaviour , IDataPersistence
     [SerializeField] private Text superNakitText;
     [SerializeField] private int bosNakit;
     [SerializeField] private Text bosNakitText;
+    IdleMoney IdleMoney;
     void Awake()
     {
         _instance = this;
     }
     void Start()
     {
+        IdleMoney = GetComponent<IdleMoney>();
+        idleMoneyText = idleMoneyCanvas.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        //String.Format("{0:0.00}", level.levelMiners[0].moveTime) + "s";
+        asansor = FindObjectOfType<Asansor>();
         banka = FindObjectOfType<Banka>();
         unlockPrefab.transform.GetChild(0).GetComponent<TextMesh>().text = CaclText(allLevels[level+1].unlockCost);
         nakitText.text = CaclText(nakit);
+        bosNakitText.text = CaclText((BirSaniyedeKazanilanGoldHesapla()/10)) + "/s";
+        Debug.Log("gecen sure : "+ IdleMoney.GecenSureyiHesapla() + " kazanılan para " + IdleMoney.GecenSureyiHesapla()* (BirSaniyedeKazanilanGoldHesapla()/10));
+        idleMoneyCanvas.GetComponent<Canvas>().enabled = true;
+        idleMoneyText.text = CaclText(IdleMoney.GecenSureyiHesapla()* (BirSaniyedeKazanilanGoldHesapla()/10));
     }
     
     public void LoadData(GameData data)
@@ -87,7 +99,11 @@ public class GameManager : MonoBehaviour , IDataPersistence
     }
     public string CaclText(float value)
     {
-        if(value >= 1000 && value < 1000000)
+        if(value < 1000)
+        {
+            return String.Format("{0:0.0}",value);
+        }
+        else if(value >= 1000 && value < 1000000)
         {
             return String.Format("{0:0.0}",value /1000 ) + "k";
         }
@@ -112,5 +128,33 @@ public class GameManager : MonoBehaviour , IDataPersistence
             return String.Format("{0:0.0}",value / 1000000000000000) + "ab";
         }
         return value.ToString();
+    }
+    public float BirSaniyedeKazanilanGoldHesapla()
+    {
+        List<float> kazanclar = new List<float>();
+        float madenBirSaniyedeToplam = 0;
+        for (int i = 0; i < asansor.activeLevels.Count; i++)
+        {
+            madenBirSaniyedeToplam += asansor.activeLevels[i].levelMiners[0].GetBirSaniyedeToplananMaden()*asansor.activeLevels[i].levelMiners.Count;
+        }
+        float bankaToplam =0;
+        for (int i = 0; i < banka.paraTasiyicilar.Count; i++)
+        {
+            bankaToplam += banka.paraTasiyicilar[i].BankaBirSaniyedeToplananMaden();
+        }
+        kazanclar.Add(madenBirSaniyedeToplam);
+        kazanclar.Add(bankaToplam);
+        kazanclar.Add(asansor.AsansorBirSaniyedeToplananMaden());
+        kazanclar.Sort();
+        // for (int i = 0; i < kazanclar.Count; i++)
+        // {
+        //     Debug.Log(kazanclar[i]);
+        // }
+        return kazanclar[0];
+    }
+    public void IdleMoneyCanvasSetActive()
+    {
+        
+        StartCoroutine(GoldAnim.instance.EarnGoldAnim((int)(IdleMoney.GecenSureyiHesapla()* (BirSaniyedeKazanilanGoldHesapla()/10)),15,idleMoneyText.transform));
     }
 }
