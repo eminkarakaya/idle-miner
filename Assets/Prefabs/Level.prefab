@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628517992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0.511, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7755498210813388450}
@@ -721,39 +721,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f722be02ee7a2d94d88377d26fffff0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  madenciSayisi: 1
+  yurumeHizi: 2
+  attackRate: 1
+  iyilestirCost: 300
+  cantaKapasitesi: 300
+  kacinciLevel: 0
   atanmisCvParent: {fileID: 8990898862859699430}
-  levelIyilestirDatas:
-  - madenciSayisi: 0
-    yurumeHizi: 0
-    attackRate: 0.1
-    iyilestirCost: 500
-    cantaKapasitesi: 100
-  - madenciSayisi: 0
-    yurumeHizi: 0
-    attackRate: 0.1
-    iyilestirCost: 500
-    cantaKapasitesi: 200
-  - madenciSayisi: 0
-    yurumeHizi: 0
-    attackRate: 0.1
-    iyilestirCost: 500
-    cantaKapasitesi: 300
-  - madenciSayisi: 0
-    yurumeHizi: 0
-    attackRate: 0.1
-    iyilestirCost: 500
-    cantaKapasitesi: 400
   managerPlace: {fileID: 628517993}
   unlockCost: 0
   kasaText: {fileID: 7755498211637938860}
   kasa: 0
   manager: {fileID: 0}
+  _manager: {fileID: 0}
   isciKapasitesi: 3
-  level: 0
-  levelLevel: 0
+  levelLevel: 1
   levelMiners:
   - {fileID: 7755498211219798001}
-  iyilestirCost: 0
 --- !u!1 &7755498211093550724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,12 +1532,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bffc1f2d27c1994e97b999834456e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 1
+  moveTime: 10
   level: {fileID: 0}
   tekVurustaToplananMaden: 30
   cantaDolulugu: 0
   bagCapaity: 300
-  attackRate: 0.1
+  attackRate: 1
   kasaPoint: {fileID: 6527715220702071883}
   minePoint: {fileID: 7342692888735667751}
-  madencilikHizi: 2

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294255626217666474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 144.34653, y: 1555.4017, z: 0}
+  m_LocalPosition: {x: 0.007788062, y: -4.627803, z: -0.18498188}
   m_LocalScale: {x: 0.3502605, y: 0.6158875, z: 1}
   m_Children:
   - {fileID: 1294255626453942900}
@@ -107,7 +107,7 @@ MonoBehaviour:
   isActive: 0
   kullanmaSuresi: 4
   beklemeSuresiTemp: 20
-  _level: -1
+  _level: 0
   oldAttckrate: 0
 --- !u!1 &1294255626453942901
 GameObject:

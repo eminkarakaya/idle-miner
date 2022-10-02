@@ -22,6 +22,8 @@ public abstract class Manager : MonoBehaviour
     protected float kullanmaSuresiTemp;
     protected float beklemeSuresi;
     [SerializeField] public float beklemeSuresiTemp;
+    string managerSpritePath;
+    string ozellikSpritePath;
     void Start()
     {
         kullanmaSuresiTemp = kullanmaSuresi;
@@ -53,7 +55,7 @@ public abstract class Manager : MonoBehaviour
     protected abstract void UseSpecialSkillTersi();
     IEnumerator KullanmaSuresi()
     {
-        activeBtn.enabled = true;
+        activeBtn.GetComponent<Image>().enabled = true;
         text.text = kullanmaSuresi.ToString();
         while(kullanmaSuresi > 0 && isActive)
         {
@@ -70,7 +72,7 @@ public abstract class Manager : MonoBehaviour
     IEnumerator BeklemeSuresi()
     {
         beklemeSuresi = beklemeSuresiTemp;
-        activeBtn.enabled = true;
+        activeBtn.GetComponent<Image>().enabled = false;
         btn.enabled = true;
         text.text = beklemeSuresi.ToString();
         while(beklemeSuresi > 0 && !isActive)
@@ -80,7 +82,7 @@ public abstract class Manager : MonoBehaviour
             text.text = beklemeSuresi.ToString();
         }
         text.enabled = false;
-        activeBtn.enabled = false;
+        activeBtn.GetComponent<Image>().enabled = false;
         btn.GetComponent<Image>().enabled = true;
     }
     public void OzelHareketBtn()
@@ -96,3 +98,4 @@ public abstract class Manager : MonoBehaviour
         }
     }
 }
+
