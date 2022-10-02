@@ -10,7 +10,7 @@ public class Level : MonoBehaviour , IDataPersistence
     public float attackRate;
     public int iyilestirCost;
     public int cantaKapasitesi;
-    
+    public Transform minerSpawnPoint;
     public int kacinciLevel;
     LevelAtamaPaneli levelAtamaPaneli;
     public Transform atanmisCvParent;
@@ -20,7 +20,6 @@ public class Level : MonoBehaviour , IDataPersistence
     [SerializeField] Text kasaText;
     [SerializeField] int kasa;
     public Manager manager;
-    public GameObject _manager;
     public int isciKapasitesi;
     public int levelLevel;
     public List<Miner> levelMiners;
@@ -28,15 +27,23 @@ public class Level : MonoBehaviour , IDataPersistence
     {
         levelAtamaPaneli = FindObjectOfType<LevelAtamaPaneli>();
         iyilestirPanel = FindObjectOfType<IyilestirPanel>();   
+        minerSpawnPoint = levelMiners[0].transform;
     }
     
     public void LoadData(GameData data)
     {
         levelLevel = data.levelLevel[kacinciLevel];
         manager = data.levelManager;
+        for (int i = 0; i < data.levelMinerCount[kacinciLevel]-1; i++)
+        {
+            var obj = Instantiate(levelMiners[0].gameObject,new Vector3(levelMiners[0].kasaPoint.position.x,levelMiners[0].transform.position.y,levelMiners[0].kasaPoint.position.z),Quaternion.identity,levelMiners[0].transform.parent);
+            levelMiners.Add(obj.GetComponent<Miner>());
+        }
+        
     }
     public void SaveData(ref GameData data)
     {
+        data.levelMinerCount[kacinciLevel] = levelMiners.Count;
         data.levelLevel[kacinciLevel] = levelLevel;
         data.levelManager = manager;
     }
@@ -56,6 +63,7 @@ public class Level : MonoBehaviour , IDataPersistence
     }
     public void LevelUpButton()
     {
+        iyilestirPanel = FindObjectOfType<IyilestirPanel>(); 
         iyilestirPanel.gameObject.GetComponent<Canvas>().enabled = true;
         iyilestirPanel.level = this;
         iyilestirPanel.LoadIyılestirDatas();
@@ -68,6 +76,7 @@ public class Level : MonoBehaviour , IDataPersistence
         }
         GameManager.instance.levelManagerAtamaCanvas.GetComponent<Canvas>().enabled = true;
         atanmisCvParent.GetChild(0).transform.parent = levelAtamaPaneli.gorevlendirilmisParent;
+        levelAtamaPaneli.gorevlendirilmisParent.GetChild(0).transform.localScale = Vector3.one;
     }
     public void Carpi()
     {

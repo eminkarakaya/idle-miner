@@ -6,6 +6,7 @@ using DG.Tweening;
 using System;
 public class GameManager : MonoBehaviour , IDataPersistence
 {
+    public GameObject levelPrefab;
     [SerializeField] public GameObject idleMoneyCanvas;
     [HideInInspector] public Text idleMoneyText;
     Button carpi;
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour , IDataPersistence
     
     public void LoadData(GameData data)
     {
-        
+        allLevels[level].enabled = true;
         // if(data.isFirst)
         asansor = FindObjectOfType<Asansor>();
             asansor.activeLevels.Clear();
@@ -56,6 +57,9 @@ public class GameManager : MonoBehaviour , IDataPersistence
         level = data.level;
         for (int i = 0; i < level+1; i++)
         {
+            allLevels[i].enabled = true;
+            allLevels[i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            // var obj =  Instantiate()
             allLevels[i].gameObject.SetActive(true);
             allLevels[i].kacinciLevel = i;
             if(allLevels[i].manager != null)
@@ -69,9 +73,10 @@ public class GameManager : MonoBehaviour , IDataPersistence
     }
     public void SaveData(ref GameData data)
     {
-        
         data.nakit = nakit;
         data.level = level;
+        Debug.Log(level);
+        
     }
     public void SetGold(int count)
     {
@@ -88,7 +93,8 @@ public class GameManager : MonoBehaviour , IDataPersistence
         else
         {
             level ++;
-            allLevels[level].gameObject.SetActive(true);
+            allLevels[level].enabled = true;
+            allLevels[level].gameObject.transform.GetChild(0).gameObject.SetActive(true);
             allLevels[level].kacinciLevel = level;
             asansor.activeLevels.Add(allLevels[level]);
             unlockPrefab.transform.position = allLevels[level+1].transform.position;

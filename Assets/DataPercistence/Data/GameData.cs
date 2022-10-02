@@ -36,7 +36,7 @@ public class GameData
         public List<Sprite> asansorManagerSprite;
         public List<Sprite> asansorOzellikSprite;
         public List<float> asansorOldMoveSpeed;
-    
+    public List<int> levelMinerCount;
     public int bankaManagerDataCount;
     public int level;
     public int nakit;
@@ -44,6 +44,13 @@ public class GameData
     public Manager levelManager;
     public GameData()
     {
+        levelMinerCount = new List<int>();
+        for (int i = 0; i < 15; i++)
+        {
+            levelMinerCount.Add(0);
+        }
+
+
         nakit = 0;
         levelAtanmismi = new List<bool>();
          levelOzellikCarpani = new List<float>();
@@ -73,6 +80,10 @@ public class GameData
         bankaManagerDataCount = 0;
         level = 0;
         levelLevel = new List<int>(){1,1};
+        for (int i = 0; i < GameManager.instance.allLevels.Count; i++)
+        {
+            levelLevel.Add(0);
+        }
         levelManager = null;
         _level = new List<int>();
         sonGirisTarihi = null;

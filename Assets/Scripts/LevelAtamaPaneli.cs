@@ -41,6 +41,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
                 
                 GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].manager = manager.GetComponent<AttackRateManager>();
                 manager.GetComponent<AttackRateManager>().transform.position = GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].managerPlace.position;
+                cv.transform.parent = GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].atanmisCvParent;
             }
             manager.GetComponent<AttackRateManager>().kullanmaSuresi = data.levelKullanmaSuresi[i];
             manager.GetComponent<AttackRateManager>().managerSprite = data.levelManagerSprite[i];
@@ -50,6 +51,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
             manager.GetComponent<AttackRateManager>().oldAttckrate = data.levelOldAttackRate[i];
             manager.GetComponent<AttackRateManager>().ozellikSprite = data.levelOzellikSprite[i];
             cv.GetComponent<Cv>().manager = manager.GetComponent<Manager>();
+            
             // cv.GetComponent<Cv>().manager.GetComponent<SpriteRenderer>().sprite = data.levelOzellikSprite[i];
         }
         // Debug.Log(data.bankaManagerDatas[0].manager);
@@ -84,6 +86,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
         int _carpanAraligi = Random.Range(carpanAraligi.x,carpanAraligi.y);
         var obj = Instantiate(cvPrefab,Vector3.zero,Quaternion.identity,parent);
         var manager = Instantiate(managerPrefab,new Vector3(-10,10,0),Quaternion.identity);
+        manager.GetComponent<Manager>().GetComponent<AttackRateManager>()._level = -1;
         obj.GetComponent<Cv>().manager = manager.GetComponent<Manager>();
         obj.GetComponent<Cv>().manager.SetOzellikCarpani(_carpanAraligi);
         obj.GetComponent<Cv>().manager.ozellikAdi = _carpanAraligi+"x AsansorHizi";
@@ -107,6 +110,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
             obj.GetComponent<Cv>().manager.managerSprite = levelManagerLevels[1];
         }
         levelManagers.Add(obj.GetComponent<Cv>().manager);
+        
     }
     public void Gorevlendir()
     {

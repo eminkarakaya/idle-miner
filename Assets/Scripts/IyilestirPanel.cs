@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 public class IyilestirPanel : MonoBehaviour 
 {
-
+    public List<int> ekstraElemanLevelleri;
     Asansor asansor;
     float madenCikarmaArtisYuzdesi = 15;
     float moveSpeedArtisYuzdesi = 1;
@@ -38,6 +38,14 @@ public class IyilestirPanel : MonoBehaviour
     public void ClickIyilestirBtn()
     {
         level.levelLevel++;
+        for (int i = 0; i < ekstraElemanLevelleri.Count; i++)
+        {
+            if(level.levelLevel == ekstraElemanLevelleri[i])
+            {
+                var obj = Instantiate(level.levelMiners[0].gameObject, level.minerSpawnPoint.position ,Quaternion.identity,level.levelMiners[0].transform.parent);
+                level.levelMiners.Add(obj.GetComponent<Miner>());
+            }
+        }
         for (int i = 0; i < level.levelMiners.Count; i++)
         {
             level.levelMiners[i].bagCapaity += (level.levelMiners[i].bagCapaity * (cantaKapasitesiArtisYuzdesi/100));

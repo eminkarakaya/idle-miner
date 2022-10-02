@@ -33,7 +33,6 @@ public class IdleMoney : MonoBehaviour , IDataPersistence
             DateTime _dateNow = Convert.ToDateTime(DateTime.Now);
             DateTime _dateOld = Convert.ToDateTime(sDate);
             TimeSpan diff = _dateNow.Subtract(_dateOld);
-            Debug.Log(diff.TotalSeconds);
             return (int) diff.TotalSeconds;
         }
         return 0;

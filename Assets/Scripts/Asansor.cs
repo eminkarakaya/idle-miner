@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class Asansor : MonoBehaviour
+public class Asansor : MonoBehaviour , IDataPersistence
 {
     public const float fullAsansorBolastmaSuresi = 1;
     public Transform asansorManagerTransform;
@@ -31,6 +31,20 @@ public class Asansor : MonoBehaviour
         madenIslemeMachine = FindObjectOfType<MadenIslemeMachine>();
         banka = FindObjectOfType<Banka>();
         StartCoroutine(AsansorMovement());
+    }
+    public void LoadData(GameData data)
+    {
+        
+    }
+    public void SaveData(ref GameData data)
+    {
+        // data.levelMinerCount.Clear();
+        // for (int i = 0; i < activeLevels.Count; i++)
+        // {
+        //     data.levelMinerCount.Add(1);
+        // }
+       
+
     }
     public float GetAsansordenZemineAktarimSuresi()
     {

@@ -11,6 +11,10 @@ public enum State{
 
 public class Miner : MonoBehaviour
 {
+    // public Miner()
+    // {
+    //     cantaDolulugu = 0;
+    // }
     public const float oneSec = 1;
     public float moveTime;
     public Level level;
@@ -20,7 +24,7 @@ public class Miner : MonoBehaviour
     public float bagCapaity;
     [SerializeField] public float attackRate;
     float attackRateTemp;
-    [SerializeField] Transform kasaPoint , minePoint;
+    [SerializeField] public Transform kasaPoint , minePoint;
     void Update()
     {
         // attackRateTemp -= Time.deltaTime;
