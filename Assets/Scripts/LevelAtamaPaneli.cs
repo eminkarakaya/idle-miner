@@ -36,12 +36,12 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
             manager.GetComponent<AttackRateManager>().beklemeSuresiTemp = data.levelBeklemeSuresiTemp[i];
             manager.GetComponent<AttackRateManager>().deneyim = data.levelDeneyim[i];
             manager.GetComponent<AttackRateManager>()._level = data._level[i];
-            if(manager.GetComponent<AttackRateManager>()._level != -1)
+            if(manager.GetComponent<AttackRateManager>()._level != 0)
             {
                 
                 GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].manager = manager.GetComponent<AttackRateManager>();
                 manager.GetComponent<AttackRateManager>().transform.position = GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].managerPlace.position;
-                cv.transform.parent = GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].atanmisCvParent;
+                cv.transform.SetParent(GameManager.instance.allLevels[manager.GetComponent<AttackRateManager>()._level].atanmisCvParent);
             }
             manager.GetComponent<AttackRateManager>().kullanmaSuresi = data.levelKullanmaSuresi[i];
             manager.GetComponent<AttackRateManager>().managerSprite = data.levelManagerSprite[i];
@@ -112,6 +112,7 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
         levelManagers.Add(obj.GetComponent<Cv>().manager);
         
     }
+
     public void Gorevlendir()
     {
         if(GameManager.instance.allLevels[chosenLevel].manager != null)
@@ -126,16 +127,19 @@ public class LevelAtamaPaneli : MonoBehaviour , IDataPersistence
                 attackRateManager1.level = null;
             }
             gorevlendirilmisManager.transform.SetParent(parent);
+            gorevlendirilmisManager.GetComponent<AttackRateManager>()._level = -1;
             // levelManagers.Remove(atanacakManager);
-            levelManagers.Add(gorevlendirilmisManager.manager);
+            // levelManagers.Add(gorevlendirilmisManager.manager);
             atanacakCv.transform.SetParent(gorevlendirilmisParent);
             Vector3 oldPos = atanacakCv.transform.position;
             atanacakCv.manager.transform.position = GameManager.instance.allLevels[chosenLevel].managerPlace.position;
             gorevlendirilmisManager.manager.transform.position = oldPos;
+            
             gorevlendirilmisManager = atanacakCv;
             GameManager.instance.allLevels[chosenLevel].manager.gameObject.SetActive(false);
             atanacakManager.gameObject.SetActive(true);
             GameManager.instance.allLevels[chosenLevel].manager = atanacakManager;
+
         }
         else
         {

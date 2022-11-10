@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameData 
-{       
+{
+    
     public string sonGirisTarihi;
         public float madenCikarmaArtisYuzdesi;
         public float moveSpeedArtisYuzdesi;

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour , IDataPersistence
     [SerializeField] private int bosNakit;
     [SerializeField] private Text bosNakitText;
     IdleMoney IdleMoney;
+    
     void Awake()
     {
         _instance = this;
@@ -61,10 +62,11 @@ public class GameManager : MonoBehaviour , IDataPersistence
             allLevels[i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
             // var obj =  Instantiate()
             allLevels[i].gameObject.SetActive(true);
-            allLevels[i].kacinciLevel = i;
+            allLevels[i].kacinciLevel = i+1;
             if(allLevels[i].manager != null)
             {
-                allLevels[i].manager.GetComponent<AttackRateManager>()._level = i;
+                // allLevels[i].manager.GetComponent<AttackRateManager>()._level = i;
+                // allLevels[i].manager.GetComponent<AttackRateManager>().level = allLevels[i];
             }
             asansor.activeLevels.Add(allLevels[i]);
         }
@@ -84,6 +86,8 @@ public class GameManager : MonoBehaviour , IDataPersistence
         nakitText.text = CaclText(nakit);
         GoldAnim.instance.EarnGoldAnim2(count,5,banka.transform);
     }
+    public int GetGold() => nakit;
+    
     public void UnlockLevel()
     {
         if(nakit < allLevels[level+1].unlockCost)
@@ -160,5 +164,6 @@ public class GameManager : MonoBehaviour , IDataPersistence
     public void IdleMoneyCanvasSetActive()
     {
         StartCoroutine(GoldAnim.instance.EarnGoldAnim((int)(IdleMoney.GecenSureyiHesapla()* (BirSaniyedeKazanilanGoldHesapla()/10)),20,idleMoneyText.transform));
+        
     }
 }

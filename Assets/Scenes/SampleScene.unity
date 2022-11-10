@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -180866.55
+      value: -186623.94
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -4806,7 +4806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -243549.92
+      value: -249307.31
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -5483,7 +5483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989697, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -346914
+      value: -354195.1
       objectReference: {fileID: 0}
     - target: {fileID: 3164181561392989726, guid: 4a2c58b422d4257409eadb4c7bc7814c, type: 3}
       propertyPath: m_Spacing
@@ -5955,7 +5955,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4056385787173048577, guid: adcc90ccfc4d9de4187532408736501d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: adcc90ccfc4d9de4187532408736501d, type: 3}
 --- !u!1001 &4612594652746276248
 PrefabInstance:
@@ -6549,7 +6550,8 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8051320180712791308, guid: 247bde42dc38a5d4eba71f92e47ee9d0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 247bde42dc38a5d4eba71f92e47ee9d0, type: 3}
 --- !u!1001 &8815607664786679287
 PrefabInstance:

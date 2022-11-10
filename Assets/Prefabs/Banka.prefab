@@ -98,7 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f6c595bc3d47c4cb0ccae268ce6745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bankaManagerCanvasTitleText: {fileID: 0}
+  bankaManagerCanvas: {fileID: 0}
+  paraTasiyicilar: []
   manager: {fileID: 0}
+  _manager: {fileID: 0}
   gold: 0
   goldText: {fileID: 6205133239554136830}
 --- !u!1 &4587854105396823912
@@ -415,25 +419,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cddd6db9c07a9042a651030dc09dcd8, type: 3}
---- !u!1 &1387253694143618994 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8800385010409995709, guid: 6cddd6db9c07a9042a651030dc09dcd8, type: 3}
-  m_PrefabInstance: {fileID: 7593557605426897423}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1387253694143618995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8800385010409995708, guid: 6cddd6db9c07a9042a651030dc09dcd8, type: 3}
   m_PrefabInstance: {fileID: 7593557605426897423}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4056385787173048577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387253694143618994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836727400acfcc1469fd947e56693baf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

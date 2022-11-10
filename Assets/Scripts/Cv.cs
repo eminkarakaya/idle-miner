@@ -33,7 +33,7 @@ public class Cv : MonoBehaviour
         ozellikText.text = manager.ozellikCarpani.ToString();
         nameText.text = manager.isim;
         ozellikSprite.sprite = manager.ozellikSprite;
-        managerSprite.sprite = manager.managerSprite;
+        // managerSprite.sprite = manager.managerSprite;
     }
     public void AsansorGorevlendir()
     {
